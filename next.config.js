@@ -1,6 +1,14 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+const withLess = require("next-with-less");
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === 'true'
+});
+const withPlugins = require('next-compose-plugins');
 
-module.exports = nextConfig
+module.exports = withPlugins([withLess, withBundleAnalyzer], {
+  cssModules: true,
+  productionBrowserSourceMaps: true,
+  experimental: {
+    concurrentFeatures: true,
+  },
+});
