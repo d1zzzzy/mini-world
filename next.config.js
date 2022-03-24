@@ -8,7 +8,7 @@ const withPlugins = require('next-compose-plugins');
 module.exports = withPlugins([withLess, withBundleAnalyzer], {
   cssModules: true,
   productionBrowserSourceMaps: true,
-  experimental: {
-    concurrentFeatures: true,
+  compiler: {
+    styledComponents: true
   },
 });
